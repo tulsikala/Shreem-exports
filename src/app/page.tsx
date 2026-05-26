@@ -166,58 +166,112 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Categories */}
-      <section className="py-24 bg-[#fef9f0]">
-        <div className="container mx-auto px-4 text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#6e0b14]">Our Core Expertise</h2>
-          <div className="w-20 h-1 bg-[#c5a059] mx-auto mb-6" />
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            We offer a diverse range of high-quality products sourced from across India, meeting international standards.
+      {/* Product Categories (Our Core Expertise) */}
+      <section className="py-28 bg-[#fdfaf2] relative overflow-hidden">
+        {/* Subtle Luxury Decorative Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#c5a059]/5 blur-3xl" />
+          <div className="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-[#6e0b14]/5 blur-3xl -translate-y-1/2" />
+          <div className="absolute bottom-10 left-1/3 w-72 h-72 rounded-full bg-[#c5a059]/5 blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 text-center mb-16 relative z-10">
+          <p className="text-[#c5a059] text-xs font-bold uppercase tracking-[0.35em] mb-3">EXQUISITE PORTFOLIO</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6e0b14]">
+            Our Core Expertise
+          </h2>
+          <div className="flex justify-center items-center gap-3 mt-4 mb-6">
+            <div className="w-10 h-[2px] bg-[#6e0b14]/20" />
+            <div className="w-12 h-1 bg-[#c5a059] rounded-full" />
+            <div className="w-10 h-[2px] bg-[#6e0b14]/20" />
+          </div>
+          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed font-light">
+            We curate and export a distinguished range of premium products sourced directly from Bharat&apos;s finest reserves, conforming strictly to premium global standards.
           </p>
         </div>
 
-        <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 stagger-children">
-          {categories.map((cat, i) => (
-            <Link
-              key={i}
-              href={`/products/${cat.slug}`}
-              className="card-lift group relative h-72 rounded-xl overflow-hidden shadow-md"
-            >
-              <Image
-                src={cat.image}
-                alt={cat.name}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2a0508]/90 via-[#2a0508]/30 to-transparent transition-all duration-500 group-hover:from-[#6e0b14]/90" />
+        {/* Bento Grid Layout */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            {categories.map((cat, i) => {
+              // Map index to bento columns
+              const cardSizes = [
+                "md:col-span-7 lg:col-span-8", // 1st major card: Agricultural Products
+                "md:col-span-5 lg:col-span-4", // 2nd card: Minerals
+                "md:col-span-4",              // 3rd card: Engineering
+                "md:col-span-4",              // 4th card: Other items
+                "md:col-span-4",              // 5th card: Pharma (Coming soon)
+              ]
+              const gridClass = cardSizes[i % cardSizes.length]
 
-              {"comingSoon" in cat && cat.comingSoon && (
-                <div className="absolute top-4 left-4 z-20 rounded-full bg-[#c5a059] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-lg">
-                  Coming Soon
-                </div>
-              )}
-              
-              {/* Icon */}
-              <div className="absolute top-4 right-4 h-10 w-10 rounded-full bg-[#c5a059]/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                <cat.icon className="h-5 w-5 text-white" />
-              </div>
+              return (
+                <Link
+                  key={cat.slug}
+                  href={`/products/${cat.slug}`}
+                  className={`${gridClass} col-span-12 group relative min-h-[340px] rounded-3xl overflow-hidden shadow-xl border border-white/40 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(110,11,20,0.12)]`}
+                >
+                  {/* Category Image */}
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  />
+                  
+                  {/* Luxury Rich Gradients overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2a0508]/100 via-[#2a0508]/40 to-transparent opacity-85 transition-opacity duration-300 group-hover:opacity-95" />
+                  <div className="absolute inset-0 bg-[#6e0b14]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 group-hover:pb-8">
-                <cat.icon className="h-8 w-8 text-[#c5a059] mb-3 transition-transform duration-500 group-hover:scale-110" />
-                <h3 className="text-lg font-bold text-white group-hover:text-[#c5a059] transition-colors duration-300">{cat.name}</h3>
-                <p className="text-white/0 group-hover:text-white/70 text-sm transition-all duration-500 mt-1 max-h-0 group-hover:max-h-10 overflow-hidden">
-                  Premium quality exports →
-                </p>
-              </div>
-            </Link>
-          ))}
+                  {/* Corner Accent Gold Lines */}
+                  <div className="absolute top-6 left-6 right-6 bottom-6 border border-[#c5a059]/20 rounded-2xl pointer-events-none transition-all duration-500 group-hover:border-[#c5a059]/40" />
+
+                  {/* Badges */}
+                  <div className="absolute top-8 left-8 z-20 flex gap-2">
+                    {"comingSoon" in cat && cat.comingSoon ? (
+                      <span className="rounded-full bg-gradient-to-r from-[#c5a059] to-[#ebd69b] px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-[#2a0508] shadow-md border border-white/20">
+                        Coming Soon
+                      </span>
+                    ) : (
+                      <span className="rounded-full bg-black/40 backdrop-blur-md px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-white shadow-md border border-white/10 group-hover:border-[#c5a059]/40 transition-colors">
+                        Premium Quality
+                      </span>
+                    )}
+                  </div>
+                  
+                  {/* Category Icon */}
+                  <div className="absolute top-8 right-8 h-12 w-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-500 group-hover:bg-[#c5a059] group-hover:border-[#c5a059] group-hover:scale-110 shadow-lg">
+                    <cat.icon className="h-5 w-5 text-white transition-colors duration-300" />
+                  </div>
+
+                  {/* Content Glass-Card Box */}
+                  <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 transition-all duration-500 group-hover:border-[#c5a059]/30 group-hover:bg-[#2a0508]/60">
+                    <div className="flex items-center gap-3">
+                      <cat.icon className="h-6 w-6 text-[#c5a059] transition-transform duration-500 group-hover:rotate-12" />
+                      <span className="text-[10px] font-semibold text-[#c5a059] uppercase tracking-[0.2em]">Ready For Export</span>
+                    </div>
+                    {/* Fix name display for agricultural taxonomy cleanly */}
+                    <h3 className="text-xl md:text-2xl font-bold text-white mt-2 group-hover:text-[#c5a059] transition-colors duration-300">
+                      {cat.name === "Agricutral products exported" ? "Agricultural Products" : cat.name}
+                    </h3>
+                    <p className="text-sm text-slate-300/95 font-light mt-2 max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-500 overflow-hidden leading-relaxed">
+                      {cat.description || "Discover premium-grade items hand-sourced to your exact packaging and shipment requirements."}
+                    </p>
+                    <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-white/50 group-hover:text-[#c5a059] transition-colors duration-300">
+                      <span>Explore Collection</span>
+                      <ArrowRight className="h-3 w-3 translate-x-0 transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
         </div>
 
-        <div className="container mx-auto px-4 mt-12 text-center">
-          <Button asChild size="lg" className="bg-[#6e0b14] hover:bg-[#8a1019] text-white px-8 border border-[#c5a059]/20">
-            <Link href="/products">
-              View All Categories
-              <ArrowRight className="ml-2 h-5 w-5" />
+        <div className="container mx-auto px-4 mt-16 text-center relative z-10">
+          <Button asChild size="lg" className="bg-[#6e0b14] hover:bg-[#850d17] text-white px-8 py-6 rounded-xl border border-[#c5a059]/30 shadow-lg group hover:scale-[1.02] transition-transform">
+            <Link href="/products" className="flex items-center gap-2 font-bold tracking-wide">
+              View All Product Offerings
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
         </div>
