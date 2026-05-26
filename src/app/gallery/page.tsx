@@ -3,14 +3,25 @@ import { Camera } from "lucide-react"
 import PageBreadcrumb from "@/components/shared/PageBreadcrumb"
 
 const galleryImages = [
+  { src: "/products/Turmeric_for_export_requirements_202605251852.jpeg", alt: "Turmeric for Export" },
   { src: "/products/premium-pomegranates.jpeg", alt: "Premium Pomegranates" },
   { src: "/products/green-cardamom.jpeg", alt: "Green Cardamom" },
   { src: "/products/turmeric-powder-high-curcumin.jpeg", alt: "High Curcumin Turmeric Powder" },
   { src: "/products/premium-cashew-nuts-w180.jpeg", alt: "Premium Cashew Nuts" },
-  { src: "/products/grains-millets.webp", alt: "Grains & Millets" },
+  { src: "/products/Rice_for_global_markets_202605251847.jpeg", alt: "Export Rice" },
+  { src: "/products/Maize_for_food_processing_202605251848.jpeg", alt: "Maize (Corn)" },
+  { src: "/products/Sorghum_grain_for_export_202605251855.jpeg", alt: "Sorghum Grain" },
+  { src: "/products/Red_Chilli_dried_for_color_202605251843.jpeg", alt: "Red Chilli" },
+  { src: "/products/Spice_Powder_Shreem_exports_202605251842.jpeg", alt: "Spice Powder" },
+  { src: "/products/Cotton_Yarn_Shreem_Exports_202605251850.jpeg", alt: "Cotton Yarn" },
+  { src: "/products/Pile_of_raw_cotton_202605251838.jpeg", alt: "Raw Cotton" },
+  { src: "/products/packaging-products.jpeg", alt: "Packaging Products" },
+  { src: "/products/Engineering_&_Machinary_Goods_202605261139.jpeg", alt: "Engineering Goods" },
+  { src: "/products/Brown_granite_surface_texture_202605251821.jpeg", alt: "Brown Granite" },
+  { src: "/products/Honey_export_quality_assurance_202605261111.jpeg", alt: "Honey Export" },
+  { src: "/products/Tea_and_coffee_products_202605261125.jpeg", alt: "Tea and Coffee" },
   { src: "/products/textiles-fabrics.webp", alt: "Textiles & Fabrics" },
   { src: "/products/handicrafts-artisan-goods.webp", alt: "Handicraft Artisan Goods" },
-  { src: "/products/packaging-products.jpeg", alt: "Packaging Products" },
 ]
 
 export default function GalleryPage() {
