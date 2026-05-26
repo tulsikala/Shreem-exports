@@ -16,13 +16,13 @@ function ThankYouContent() {
       : "Thanks for reaching out. We’ve received your message and will respond as soon as possible."
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#2a0508] via-[#4a1018] to-black text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#2a0508] via-[#4a1018] to-black pt-28 md:pt-32 text-white">
       <div className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 opacity-40 blur-3xl" />
         <div className="pointer-events-none absolute -top-32 -left-56 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-[#c5a059] via-[#6e0b14] to-transparent opacity-40 animate-blob" />
         <div className="pointer-events-none absolute -bottom-40 -right-52 h-[480px] w-[480px] rounded-full bg-gradient-to-br from-[#c5a059] via-[#6e0b14] to-transparent opacity-30 animate-blob animation-delay-2000" />
 
-        <div className="container mx-auto flex min-h-screen items-center justify-center px-4 py-16">
+        <div className="container mx-auto flex min-h-[calc(100svh-8rem)] items-center justify-center px-4 py-10 md:min-h-[calc(100svh-9rem)] md:py-14">
           <div className="w-full max-w-2xl rounded-3xl border border-white/10 bg-white/10 p-8 text-center shadow-2xl backdrop-blur-xl md:p-12">
             <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#6e0b14]/20 text-[#c5a059] shadow-lg">
               <CheckCircle2 className="h-11 w-11" />

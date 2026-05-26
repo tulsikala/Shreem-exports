@@ -251,7 +251,7 @@ export default function Home() {
                     </div>
                     {/* Fix name display for agricultural taxonomy cleanly */}
                     <h3 className="text-xl md:text-2xl font-bold text-white mt-2 group-hover:text-[#c5a059] transition-colors duration-300">
-                      {cat.name === "Agricutral products exported" ? "Agricultural Products" : cat.name}
+                      {cat.slug === "agricultural-products-exported" ? "Agricultural Products" : cat.name}
                     </h3>
                     <p className="text-sm text-slate-300/95 font-light mt-2 max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-500 overflow-hidden leading-relaxed">
                       {cat.description || "Discover premium-grade items hand-sourced to your exact packaging and shipment requirements."}

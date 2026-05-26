@@ -11,9 +11,9 @@ import PageBreadcrumb from "@/components/shared/PageBreadcrumb"
 const formSubmitAction = "https://formsubmit.co/sudheeshk234@gmail.com"
 
 const productCategories = [
-  "Agricutral products exported",
+  "Agricultural products exported",
   "Mineral & Natural Resource Exports",
-  "Engineering & Machinary Goods",
+  "Engineering & Machinery Goods",
   "Other Export items",
   "Pharmaceutical & Medical Products",
 ]

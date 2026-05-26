@@ -18,9 +18,9 @@ const nameMap: Record<string, string> = {
   contact: "Contact Us",
   gallery: "Gallery",
   "request-quote": "Request Quote",
-  "agricultural-products-exported": "Agricutral products exported",
+  "agricultural-products-exported": "Agricultural products exported",
   minerals: "Mineral & Natural Resource Exports",
-  "engineering-machinary-goods": "Engineering & Machinary Goods",
+  "engineering-machinary-goods": "Engineering & Machinery Goods",
   "other-export-items": "Other Export items",
   "pharmaceutical-medical-products": "Pharmaceutical & Medical Products",
 }

@@ -4,9 +4,9 @@ const DUMMY_IMAGE = "/products/packaging-products.jpeg"
 
 export const categories = [
   {
-    name: "Agricutral products exported",
+    name: "Agricultural products exported",
     slug: "agricultural-products-exported",
-    description: "cotton is one of the largest agricutral exports from telegana",
+    description: "Cotton is one of the largest agricultural exports from Telangana.",
     icon: Wheat,
     image: "/products/SHREEM_EXPORTS_agricultural_prod…_202605251857.jpeg",
     heroImage: "/products/SHREEM_EXPORTS_agricultural_prod…_202605251857.jpeg",
@@ -94,9 +94,9 @@ export const categories = [
     ],
   },
   {
-    name: "Engineering & Machinary Goods",
+    name: "Engineering & Machinery Goods",
     slug: "engineering-machinary-goods",
-    description: "engineering goods contribute the biggest share of teleangana exports.",
+    description: "Engineering goods contribute the biggest share of Telangana exports.",
     icon: Package,
     image: "/products/Engineering_&_Machinary_Goods_202605261139.jpeg",
     heroImage: "/products/Engineering_&_Machinary_Goods_202605261139.jpeg",
