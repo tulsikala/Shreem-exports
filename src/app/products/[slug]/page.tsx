@@ -66,8 +66,8 @@ export default async function ProductCategoryPage({
           {category.products.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
               {category.products.map((product, i) => {
-                const giTag = typeof (product as { giTag?: unknown }).giTag === "string"
-                  ? (product as { giTag: string }).giTag
+                const giTag = typeof (product as unknown as Record<string, unknown>).giTag === "string"
+                  ? (product as unknown as { giTag: string }).giTag
                   : ""
 
                 return (

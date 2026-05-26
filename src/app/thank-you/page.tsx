@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { CheckCircle2, ArrowRight, Home, Mail, Package } from "lucide-react"
 import { useSearchParams } from "next/navigation"
+import { Suspense } from "react"
 
-export default function ThankYouPage() {
+function ThankYouContent() {
   const searchParams = useSearchParams()
   const source = searchParams.get("source")
 
@@ -93,5 +94,13 @@ export default function ThankYouPage() {
         }
       `}</style>
     </div>
+  )
+}
+
+export default function ThankYouPage() {
+  return (
+    <Suspense>
+      <ThankYouContent />
+    </Suspense>
   )
 }
