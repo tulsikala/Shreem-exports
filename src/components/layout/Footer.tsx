@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Mail, Phone, MapPin, Globe, ArrowUpRight } from "lucide-react"
 import { Lato } from "next/font/google"
+import { categories } from "@/data/products"
 
 const lato = Lato({
   subsets: ["latin"],
@@ -22,15 +23,10 @@ const footerLinks = [
   },
   {
     title: "Products",
-    links: [
-      { name: "Fruits & Vegetables", href: "/products" },
-      { name: "Spices & Herbs", href: "/products" },
-      { name: "Namkeen & Snacks", href: "/products" },
-      { name: "Garments", href: "/products" },
-      { name: "Leather Products", href: "/products" },
-      { name: "Copper Products", href: "/products" },
-      { name: "Packaging Products", href: "/products" },
-    ],
+    links: categories.map((category) => ({
+      name: category.name,
+      href: `/products/${category.slug}`,
+    })),
   },
 ]
 

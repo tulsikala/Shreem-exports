@@ -253,9 +253,11 @@ export default function Home() {
                     <h3 className="text-xl md:text-2xl font-bold text-white mt-2 group-hover:text-[#c5a059] transition-colors duration-300">
                       {cat.slug === "agricultural-products-exported" ? "Agricultural Products" : cat.name}
                     </h3>
-                    <p className="text-sm text-slate-300/95 font-light mt-2 max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-500 overflow-hidden leading-relaxed">
-                      {cat.description || "Discover premium-grade items hand-sourced to your exact packaging and shipment requirements."}
-                    </p>
+                    <div className="mt-2 overflow-hidden transition-all duration-500 max-h-24 opacity-100 md:max-h-0 md:opacity-0 md:group-hover:max-h-24 md:group-hover:opacity-100">
+                      <p className="text-sm font-light leading-relaxed text-slate-300/95 line-clamp-3 md:group-hover:text-slate-200">
+                        {cat.description || "Discover premium-grade items hand-sourced to your exact packaging and shipment requirements."}
+                      </p>
+                    </div>
                     <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-white/50 group-hover:text-[#c5a059] transition-colors duration-300">
                       <span>Explore Collection</span>
                       <ArrowRight className="h-3 w-3 translate-x-0 transition-transform duration-300 group-hover:translate-x-1" />

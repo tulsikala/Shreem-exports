@@ -52,6 +52,7 @@ export const categories = [
         image: "/products/Turmeric_for_export_requirements_202605251852.jpeg",
         origin: "Telangana and Andhra Pradesh",
         packaging: "25kg, 50kg bags",
+        giTag: "Nizamabad Turmeric",
       },
       {
         name: "Red Chilli",
@@ -59,6 +60,7 @@ export const categories = [
         image: "/products/Red_Chilli_dried_for_color_202605251843.jpeg",
         origin: "Guntur, Andhra Pradesh",
         packaging: "25kg, 50kg bags",
+        giTag: "Guntur Sannam Chilli",
       },
       {
         name: "Spice Powder",
