@@ -167,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* Product Categories (Our Core Expertise) */}
-      <section className="py-28 bg-[#fdfaf2] relative overflow-hidden">
+      <section className="relative overflow-hidden bg-[#fdfaf2] py-20 md:py-24 lg:py-28">
         {/* Subtle Luxury Decorative Background Elements */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-[#c5a059]/5 blur-3xl" />
@@ -175,7 +175,7 @@ export default function Home() {
           <div className="absolute bottom-10 left-1/3 w-72 h-72 rounded-full bg-[#c5a059]/5 blur-3xl" />
         </div>
 
-        <div className="container mx-auto px-4 text-center mb-16 relative z-10">
+        <div className="container relative z-10 mx-auto mb-12 px-4 text-center md:mb-16">
           <p className="text-[#c5a059] text-xs font-bold uppercase tracking-[0.35em] mb-3">EXQUISITE PORTFOLIO</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#6e0b14]">
             Our Core Expertise
@@ -185,30 +185,31 @@ export default function Home() {
             <div className="w-12 h-1 bg-[#c5a059] rounded-full" />
             <div className="w-10 h-[2px] bg-[#6e0b14]/20" />
           </div>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed font-light">
+          <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-slate-600 md:text-lg">
             We curate and export a distinguished range of premium products sourced directly from Bharat&apos;s finest reserves, conforming strictly to premium global standards.
           </p>
         </div>
 
         {/* Bento Grid Layout */}
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
             {categories.map((cat, i) => {
-              // Map index to bento columns
+              // Use bento spans only on large screens; keep tablet layout balanced.
               const cardSizes = [
-                "md:col-span-7 lg:col-span-8", // 1st major card: Agricultural Products
-                "md:col-span-5 lg:col-span-4", // 2nd card: Minerals
-                "md:col-span-4",              // 3rd card: Engineering
-                "md:col-span-4",              // 4th card: Other items
-                "md:col-span-4",              // 5th card: Pharma (Coming soon)
+                "lg:col-span-8", // 1st major card: Agricultural Products
+                "lg:col-span-4", // 2nd card: Minerals
+                "lg:col-span-4", // 3rd card: Engineering
+                "lg:col-span-4", // 4th card: Other items
+                "lg:col-span-4", // 5th card: Pharma (Coming soon)
               ]
               const gridClass = cardSizes[i % cardSizes.length]
+              const tabletClass = i === categories.length - 1 ? "md:col-span-2" : "md:col-span-1"
 
               return (
                 <Link
                   key={cat.slug}
                   href={`/products/${cat.slug}`}
-                  className={`${gridClass} col-span-12 group relative min-h-[340px] rounded-3xl overflow-hidden shadow-xl border border-white/40 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(110,11,20,0.12)]`}
+                  className={`${gridClass} ${tabletClass} group relative col-span-1 min-h-[300px] overflow-hidden rounded-3xl border border-white/40 shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(110,11,20,0.12)] sm:min-h-[330px] lg:min-h-[360px]`}
                 >
                   {/* Category Image */}
                   <Image
@@ -223,38 +224,38 @@ export default function Home() {
                   <div className="absolute inset-0 bg-[#6e0b14]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Corner Accent Gold Lines */}
-                  <div className="absolute top-6 left-6 right-6 bottom-6 border border-[#c5a059]/20 rounded-2xl pointer-events-none transition-all duration-500 group-hover:border-[#c5a059]/40" />
+                  <div className="pointer-events-none absolute bottom-4 left-4 right-4 top-4 rounded-2xl border border-[#c5a059]/20 transition-all duration-500 group-hover:border-[#c5a059]/40 sm:bottom-6 sm:left-6 sm:right-6 sm:top-6" />
 
                   {/* Badges */}
-                  <div className="absolute top-8 left-8 z-20 flex gap-2">
+                  <div className="absolute left-4 top-4 z-20 flex gap-2 sm:left-8 sm:top-8">
                     {"comingSoon" in cat && cat.comingSoon ? (
-                      <span className="rounded-full bg-gradient-to-r from-[#c5a059] to-[#ebd69b] px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-[#2a0508] shadow-md border border-white/20">
+                      <span className="rounded-full border border-white/20 bg-gradient-to-r from-[#c5a059] to-[#ebd69b] px-3 py-1 text-[8px] font-bold uppercase tracking-[0.2em] text-[#2a0508] shadow-md sm:px-4 sm:py-1.5 sm:text-[9px] sm:tracking-[0.25em]">
                         Coming Soon
                       </span>
                     ) : (
-                      <span className="rounded-full bg-black/40 backdrop-blur-md px-4 py-1.5 text-[9px] font-bold uppercase tracking-[0.25em] text-white shadow-md border border-white/10 group-hover:border-[#c5a059]/40 transition-colors">
+                      <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[8px] font-bold uppercase tracking-[0.2em] text-white shadow-md backdrop-blur-md transition-colors group-hover:border-[#c5a059]/40 sm:px-4 sm:py-1.5 sm:text-[9px] sm:tracking-[0.25em]">
                         Premium Quality
                       </span>
                     )}
                   </div>
                   
                   {/* Category Icon */}
-                  <div className="absolute top-8 right-8 h-12 w-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-500 group-hover:bg-[#c5a059] group-hover:border-[#c5a059] group-hover:scale-110 shadow-lg">
-                    <cat.icon className="h-5 w-5 text-white transition-colors duration-300" />
+                  <div className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-md transition-all duration-500 group-hover:scale-110 group-hover:border-[#c5a059] group-hover:bg-[#c5a059] sm:right-8 sm:top-8 sm:h-12 sm:w-12">
+                    <cat.icon className="h-4 w-4 text-white transition-colors duration-300 sm:h-5 sm:w-5" />
                   </div>
 
                   {/* Content Glass-Card Box */}
-                  <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 transition-all duration-500 group-hover:border-[#c5a059]/30 group-hover:bg-[#2a0508]/60">
+                  <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-md transition-all duration-500 group-hover:border-[#c5a059]/30 group-hover:bg-[#2a0508]/60 sm:bottom-8 sm:left-8 sm:right-8 sm:p-6">
                     <div className="flex items-center gap-3">
-                      <cat.icon className="h-6 w-6 text-[#c5a059] transition-transform duration-500 group-hover:rotate-12" />
+                      <cat.icon className="h-5 w-5 text-[#c5a059] transition-transform duration-500 group-hover:rotate-12 sm:h-6 sm:w-6" />
                       <span className="text-[10px] font-semibold text-[#c5a059] uppercase tracking-[0.2em]">Ready For Export</span>
                     </div>
                     {/* Fix name display for agricultural taxonomy cleanly */}
-                    <h3 className="text-xl md:text-2xl font-bold text-white mt-2 group-hover:text-[#c5a059] transition-colors duration-300">
+                    <h3 className="mt-2 line-clamp-2 text-lg font-bold text-white transition-colors duration-300 group-hover:text-[#c5a059] sm:text-xl lg:text-2xl">
                       {cat.slug === "agricultural-products-exported" ? "Agricultural Products" : cat.name}
                     </h3>
-                    <div className="mt-2 overflow-hidden transition-all duration-500 max-h-24 opacity-100 md:max-h-0 md:opacity-0 md:group-hover:max-h-24 md:group-hover:opacity-100">
-                      <p className="text-sm font-light leading-relaxed text-slate-300/95 line-clamp-3 md:group-hover:text-slate-200">
+                    <div className="mt-2 max-h-24 overflow-hidden opacity-100 transition-all duration-500 lg:max-h-0 lg:opacity-0 lg:group-hover:max-h-24 lg:group-hover:opacity-100">
+                      <p className="line-clamp-3 text-sm font-light leading-relaxed text-slate-300/95 lg:group-hover:text-slate-200">
                         {cat.description || "Discover premium-grade items hand-sourced to your exact packaging and shipment requirements."}
                       </p>
                     </div>
