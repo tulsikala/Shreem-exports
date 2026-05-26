@@ -140,7 +140,7 @@ export default function Home() {
 
             <div className="lg:w-1/2 relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/hero/road_ways.webp"
+                src="/hero/make_it_something_asthtic_way_202605261733.jpeg"
                 alt="Our Products"
                 fill
                 className="object-cover"

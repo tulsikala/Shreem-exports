@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const images = [
   "/hero/air_ways.webp",
-  "/hero/road_ways.webp",
+  "/hero/make_it_something_asthtic_way_202605261733.jpeg",
   "/hero/water_ways.webp",
 ]
 
