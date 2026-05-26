@@ -63,65 +63,77 @@ export default async function ProductCategoryPage({
           </Link>
 
           {/* Products grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
-            {category.products.map((product, i) => (
-              <Card
-                key={i}
-                className="overflow-hidden border-none shadow-lg card-lift group"
-              >
-                  <div className="relative h-56 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    {"giTag" in product && product.giTag && (
-                      <div className="absolute top-3 left-3 z-10">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#c5a059] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-white/20">
-                          <Award className="h-3 w-3" />
-                          GI Tagged
-                        </span>
-                      </div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-lg font-bold text-[#6e0b14]">{product.name}</h3>
+          {category.products.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+              {category.products.map((product, i) => (
+                <Card
+                  key={i}
+                  className="overflow-hidden border-none shadow-lg card-lift group"
+                >
+                    <div className="relative h-56 overflow-hidden">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
                       {"giTag" in product && product.giTag && (
-                        <Award className="h-5 w-5 text-[#c5a059] flex-shrink-0" />
+                        <div className="absolute top-3 left-3 z-10">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#c5a059] text-white text-[10px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-white/20">
+                            <Award className="h-3 w-3" />
+                            GI Tagged
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+                    <div className="p-6 space-y-3">
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="text-lg font-bold text-[#6e0b14]">{product.name}</h3>
+                        {"giTag" in product && product.giTag && (
+                          <Award className="h-5 w-5 text-[#c5a059] flex-shrink-0" />
+                        )}
+                      </div>
+                      <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                        {product.description}
+                      </p>
+                      {(product.origin || product.packaging || ("giTag" in product && product.giTag)) && (
+                        <div className="flex flex-wrap gap-3 pt-1">
+                          {product.origin && (
+                            <span className="inline-flex items-center gap-1 text-xs text-slate-600 bg-[#fef9f0] px-3 py-1 rounded-full border border-[#c5a059]/10">
+                              <MapPin className="h-3 w-3 text-[#c5a059]" />
+                              {product.origin}
+                            </span>
+                          )}
+                          {"giTag" in product && product.giTag && (
+                            <span className="inline-flex items-center gap-1 text-xs text-[#6e0b14] bg-[#6e0b14]/5 px-3 py-1 rounded-full border border-[#6e0b14]/10 font-medium">
+                              <Award className="h-3 w-3 text-[#c5a059]" />
+                              {product.giTag}
+                            </span>
+                          )}
+                          {product.packaging && (
+                            <span className="inline-flex items-center gap-1 text-xs text-slate-600 bg-[#fef9f0] px-3 py-1 rounded-full">
+                              <Package className="h-3 w-3 text-[#c5a059]" />
+                              {product.packaging}
+                            </span>
+                          )}
+                        </div>
                       )}
                     </div>
-                    <p className="text-slate-500 text-sm leading-relaxed line-clamp-2">
-                      {product.description}
-                    </p>
-                    {(product.origin || product.packaging || ("giTag" in product && product.giTag)) && (
-                      <div className="flex flex-wrap gap-3 pt-1">
-                        {product.origin && (
-                          <span className="inline-flex items-center gap-1 text-xs text-slate-600 bg-[#fef9f0] px-3 py-1 rounded-full border border-[#c5a059]/10">
-                            <MapPin className="h-3 w-3 text-[#c5a059]" />
-                            {product.origin}
-                          </span>
-                        )}
-                        {"giTag" in product && product.giTag && (
-                          <span className="inline-flex items-center gap-1 text-xs text-[#6e0b14] bg-[#6e0b14]/5 px-3 py-1 rounded-full border border-[#6e0b14]/10 font-medium">
-                            <Award className="h-3 w-3 text-[#c5a059]" />
-                            {product.giTag}
-                          </span>
-                        )}
-                        {product.packaging && (
-                          <span className="inline-flex items-center gap-1 text-xs text-slate-600 bg-[#fef9f0] px-3 py-1 rounded-full">
-                            <Package className="h-3 w-3 text-[#c5a059]" />
-                            {product.packaging}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-              </Card>
-            ))}
-          </div>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-[#c5a059]/40 bg-[#fef9f0] px-6 py-16 text-center shadow-sm">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#6e0b14]/10 text-[#6e0b14]">
+                <Package className="h-8 w-8" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#6e0b14] mb-3">Coming Soon</h3>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                This category is currently being prepared. Please check back soon for product updates and export details.
+              </p>
+            </div>
+          )}
 
           {/* CTA */}
           <div className="mt-20 text-center bg-gradient-to-r from-[#6e0b14] to-[#4a0810] rounded-2xl p-12 shadow-xl">

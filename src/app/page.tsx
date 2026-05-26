@@ -190,6 +190,12 @@ export default function Home() {
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2a0508]/90 via-[#2a0508]/30 to-transparent transition-all duration-500 group-hover:from-[#6e0b14]/90" />
+
+              {"comingSoon" in cat && cat.comingSoon && (
+                <div className="absolute top-4 left-4 z-20 rounded-full bg-[#c5a059] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-lg">
+                  Coming Soon
+                </div>
+              )}
               
               {/* Icon */}
               <div className="absolute top-4 right-4 h-10 w-10 rounded-full bg-[#c5a059]/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">

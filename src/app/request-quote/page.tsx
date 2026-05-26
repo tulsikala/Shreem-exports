@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Send, PackageCheck } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -7,17 +8,23 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import PageBreadcrumb from "@/components/shared/PageBreadcrumb"
 
+const formSubmitAction = "https://formsubmit.co/sudheeshk234@gmail.com"
+
 const productCategories = [
-  "Fresh Fruits & Vegetables",
-  "Spices & Seasonings",
-  "Dry Fruits & Nuts",
-  "Textiles & Fabrics",
-  "Handicrafts & Artisan Goods",
-  "Grains & Millets",
-  "Packaging Products",
+  "Agricutral products exported",
+  "Mineral & Natural Resource Exports",
+  "Engineering & Machinary Goods",
+  "Other Export items",
+  "Pharmaceutical & Medical Products",
 ]
 
 export default function RequestQuotePage() {
+  const [nextUrl, setNextUrl] = useState("/thank-you?source=quote")
+
+  useEffect(() => {
+    setNextUrl(`${window.location.origin}/thank-you?source=quote`)
+  }, [])
+
   return (
     <>
       <PageBreadcrumb />
@@ -34,30 +41,34 @@ export default function RequestQuotePage() {
           </div>
 
           <Card className="p-8 md:p-10 border-none shadow-xl">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" action={formSubmitAction} method="POST">
+              <input type="hidden" name="_next" value={nextUrl} />
+              <input type="hidden" name="_subject" value="Request Quote - Shreem Exports" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="text-sm font-medium text-slate-700 mb-1 block">Full Name *</label>
-                  <Input placeholder="Your name" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                  <Input name="name" required placeholder="Your name" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-slate-700 mb-1 block">Company Name</label>
-                  <Input placeholder="Your company" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                  <Input name="company" placeholder="Your company" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
                 </div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="text-sm font-medium text-slate-700 mb-1 block">Email *</label>
-                  <Input type="email" placeholder="you@company.com" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                  <Input name="email" type="email" required placeholder="you@company.com" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-slate-700 mb-1 block">Phone</label>
-                  <Input type="tel" placeholder="+91 XXXXX XXXXX" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                  <Input name="phone" type="tel" placeholder="+91 XXXXX XXXXX" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
                 </div>
               </div>
               <div>
                 <label className="text-sm font-medium text-slate-700 mb-1 block">Product Category *</label>
-                <Select>
+                <Select name="product_category">
                   <SelectTrigger className="w-full bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]">
                     <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
@@ -71,16 +82,16 @@ export default function RequestQuotePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="text-sm font-medium text-slate-700 mb-1 block">Quantity / Volume</label>
-                  <Input placeholder="e.g. 500 kg, 10 tons" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                  <Input name="quantity" placeholder="e.g. 500 kg, 10 tons" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-slate-700 mb-1 block">Destination Country</label>
-                  <Input placeholder="e.g. USA, UAE, Germany" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                  <Input name="destination_country" placeholder="e.g. USA, UAE, Germany" className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
                 </div>
               </div>
               <div>
                 <label className="text-sm font-medium text-slate-700 mb-1 block">Additional Details</label>
-                <Textarea placeholder="Specific products, packaging preferences, delivery timeline..." rows={5} className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
+                <Textarea name="additional_details" placeholder="Specific products, packaging preferences, delivery timeline..." rows={5} className="bg-[#fef9f0] border-slate-200 focus:border-[#c5a059] focus:ring-[#c5a059]" />
               </div>
               <button
                 type="submit"

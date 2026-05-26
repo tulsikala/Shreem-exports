@@ -34,6 +34,12 @@ export default function ProductsPage() {
                 {/* Gradient & tint overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2a0508] via-[#2a0508]/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
 
+                {"comingSoon" in cat && cat.comingSoon && (
+                  <div className="absolute top-4 left-4 z-20 rounded-full bg-[#c5a059] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-lg">
+                    Coming Soon
+                  </div>
+                )}
+
                 {/* Content */}
                 <div className="relative z-10 flex flex-col justify-end h-full p-8">
                   <div className="flex items-center gap-3 mb-4">

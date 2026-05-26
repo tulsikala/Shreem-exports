@@ -1,12 +1,14 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
 import { Lato } from "next/font/google"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import PageBreadcrumb from "@/components/shared/PageBreadcrumb"
+
+const formSubmitAction = "https://formsubmit.co/sudheeshk234@gmail.com"
 
 const lato = Lato({
   subsets: ["latin"],
@@ -15,16 +17,11 @@ const lato = Lato({
 })
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle")
+  const [nextUrl, setNextUrl] = useState("/thank-you?source=message")
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setStatus("sent")
-
-    window.setTimeout(() => {
-      setStatus("idle")
-    }, 4200)
-  }
+  useEffect(() => {
+    setNextUrl(`${window.location.origin}/thank-you?source=message`)
+  }, [])
 
   const contactItems = [
     { icon: MapPin, label: "Address", value: "6-10-62, Vinayak Nagar, HAL, Hyderabad, Telangana - 500042" },
@@ -65,11 +62,16 @@ export default function ContactPage() {
                   <h2 className="text-2xl md:text-3xl font-bold text-white">Send us a message</h2>
                   <p className="mt-2 text-slate-200/80">We&apos;ll get back to you promptly with the information you need.</p>
 
-                  <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+                  <form className="mt-8 space-y-5" action={formSubmitAction} method="POST">
+                    <input type="hidden" name="_next" value={nextUrl} />
+                    <input type="hidden" name="_subject" value="New Message - Shreem Exports" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_template" value="table" />
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <label className="space-y-2">
                         <span className="text-sm font-medium text-slate-200/90">Full Name</span>
                         <Input
+                          name="name"
                           placeholder="Your name"
                           className="bg-white/10 border-white/20 focus:border-[#c5a059] focus:ring-[#c5a059] text-white placeholder:text-slate-200/60"
                         />
@@ -77,6 +79,7 @@ export default function ContactPage() {
                       <label className="space-y-2">
                         <span className="text-sm font-medium text-slate-200/90">Email</span>
                         <Input
+                          name="email"
                           type="email"
                           placeholder="you@example.com"
                           className="bg-white/10 border-white/20 focus:border-[#c5a059] focus:ring-[#c5a059] text-white placeholder:text-slate-200/60"
@@ -87,6 +90,7 @@ export default function ContactPage() {
                     <label className="space-y-2">
                       <span className="text-sm font-medium text-slate-200/90">Subject</span>
                       <Input
+                        name="subject"
                         placeholder="How can we help?"
                         className="bg-white/10 border-white/20 focus:border-[#c5a059] focus:ring-[#c5a059] text-white placeholder:text-slate-200/60"
                       />
@@ -95,6 +99,7 @@ export default function ContactPage() {
                     <label className="space-y-2">
                       <span className="text-sm font-medium text-slate-200/90">Message</span>
                       <Textarea
+                        name="message"
                         placeholder="Tell us what you need..."
                         rows={5}
                         className="bg-white/10 border-white/20 focus:border-[#c5a059] focus:ring-[#c5a059] text-white placeholder:text-slate-200/60"
@@ -105,13 +110,9 @@ export default function ContactPage() {
                       type="submit"
                       className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#6e0b14] px-6 py-3 text-sm font-semibold text-white shadow-xl transition hover:bg-[#7f0d1b] focus:outline-none focus:ring-2 focus:ring-[#c5a059]/60 md:w-auto mt-6"
                     >
-                      {status === "sent" ? "Message Sent" : "Send Message"}
+                      Send Message
                       <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </button>
-
-                    {status === "sent" && (
-                      <p className="mt-3 text-sm text-slate-200/80">Thanks! We&apos;ve received your message and will respond as soon as possible.</p>
-                    )}
                   </form>
                 </div>
               </Card>

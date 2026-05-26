@@ -18,13 +18,11 @@ const nameMap: Record<string, string> = {
   contact: "Contact Us",
   gallery: "Gallery",
   "request-quote": "Request Quote",
-  "fruits-vegetables": "Fresh Fruits & Vegetables",
-  spices: "Spices & Seasonings",
-  "dry-fruits": "Dry Fruits & Nuts",
-  textiles: "Textiles & Fabrics",
-  handicrafts: "Handicrafts & Artisan Goods",
-  grains: "Grains & Millets",
-  packaging: "Packaging Products",
+  "agricultural-products-exported": "Agricutral products exported",
+  minerals: "Mineral & Natural Resource Exports",
+  "engineering-machinary-goods": "Engineering & Machinary Goods",
+  "other-export-items": "Other Export items",
+  "pharmaceutical-medical-products": "Pharmaceutical & Medical Products",
 }
 
 export default function PageBreadcrumb() {

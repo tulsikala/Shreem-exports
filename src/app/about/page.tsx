@@ -25,6 +25,20 @@ export default function AboutPage() {
               <p className="text-slate-600 text-lg leading-relaxed">
                 Based in Hyderabad, Shreem Exports Private Limited is a specialized Indian export house. We pride ourselves on sourcing top-tier goods across multiple categories to ensure our global partners receive only the finest quality.
               </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl border border-[#c5a059]/20 bg-[#fef9f0] p-5">
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Founder</div>
+                  <div className="text-base font-bold text-[#6e0b14]">Rajput Sowmya Pratima</div>
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Director</div>
+                  <div className="text-base font-bold text-[#6e0b14]">D. Narendar Singh</div>
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-slate-500 font-semibold mb-1">Co-Director</div>
+                  <div className="text-base font-bold text-[#6e0b14]">Manmohan Singh, Sharan Singh Rajput</div>
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-8 py-4">
                 <div className="space-y-1 border-l-4 border-[#c5a059] pl-4">
                   <div className="text-3xl font-bold text-[#6e0b14]">7+</div>
